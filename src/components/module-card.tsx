@@ -3,24 +3,20 @@ import { Button, Card, CardBody, CardHeader, Typography } from '@material-tailwi
 interface ModuleCardProps {
   module: string;
 }
+
 export function ModuleCard({ module }: ModuleCardProps) {
-  const handleOnClickCardHeader = () => {
-    try {
-    } catch (error) {
-      console.error('handleOnClickCardHeader:', error);
-    }
-  };
 
   return (
     <Card placeholder={''} className='border'>
       <CardHeader placeholder={''} className='h-52' shadow={true} floated={true}>
-        <Button placeholder={''} color={'white'} className='w-full h-full'>
+        <Button placeholder={''} color={'white'} className='w-full h-full '>
           <Typography placeholder={''} variant='h2' className='flex justify-center items-center normal-case'>
             {`${module.toUpperCase()}`}
           </Typography>
         </Button>
       </CardHeader>
-      <CardBody placeholder={''}>
+
+      <CardBody placeholder={''} >
         <div className='flex items-center gap-2'>
           <Typography placeholder={''} variant='small' color='blue' className='mb-2 font-normal text-gray-500'>
             모듈 카드 선택 - 프론트 & 백 & 재구동 일괄 처리

@@ -2,22 +2,23 @@
 
 // components
 import { Navbar } from '@/components';
-import Main from './main';
 import React, { useEffect } from 'react';
-import { callApi } from '../utils';
+import Main from './main';
+import { Cog6ToothIcon, BellIcon } from '@heroicons/react/24/solid';
 
 // sections
 export default function RootPage() {
   const [modules, setModules] = React.useState<string[]>([]);
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
+    setModules(['production', 'purchase', 'logis']);
   }, []);
 
   const fetchData = async () => {
     try {
-      const { resultData } = await callApi('http://localhost:7007/modules');
-      setModules(resultData);
+      // const { resultData } = await callApi('http://localhost:7007/modules');
+      // setModules(resultData);
     } catch (error) {
       console.error('fetchData:', error);
     }

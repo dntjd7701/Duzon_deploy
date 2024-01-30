@@ -1,13 +1,6 @@
-type callApiParameter = {};
 type HttpMethod = 'POST' | 'GET' | 'PUT' | 'DELETE';
-type callApiResultType = {
-  resultCode: number;
-  resultData: Array<any>;
-  resultMsg: string;
-};
-type callApiType = (url: string, param?: callApiParameter, method?: HttpMethod) => Promise<callApiResultType>;
 
-export const callApi: callApiType = async (url, param, method = 'GET') => {
+export const callApi = async (url: string, param: object, method: HttpMethod = 'GET') => {
   try {
     const response = await fetch(url, {
       method: method,
@@ -17,14 +10,14 @@ export const callApi: callApiType = async (url, param, method = 'GET') => {
       body: JSON.stringify(param),
     });
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch: ${response.statusText}`);
-    }
+    const result = await response.json();
+    console.debug('result:', result);
 
-    const result: callApiResultType = await response.json();
+    if (!response.ok || result.resultCode < 0) {
+      throw new Error(`Failed to fetch: (${result.resultCode}) ${result.resultMsg.toString() || ''}`);
+    }
     return result;
   } catch (error) {
     console.error('callApi:', error);
-    throw error;
   }
 };

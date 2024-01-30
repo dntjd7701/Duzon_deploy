@@ -1,81 +1,48 @@
-import { callApi } from '@/utils';
 import { BellIcon, Cog6ToothIcon } from '@heroicons/react/24/solid';
-import { Button, IconButton, Navbar as MTNavbar, Typography } from '@material-tailwind/react';
+import { useEffect } from 'react';
 
-export function Navbar() {
-  const fileSettingBtnHandle = async () => {
-    try {
-      await callApi('http://localhost:7007/setting');
-    } catch (error) {
-      console.debug('fileSettingBtnHandle:', error);
+export const Navbar = () => {
+  useEffect(() => {
+    document.addEventListener('animationend', () => {
+
+    })
+    return () => {
+      // document.removeEventListener('animationend', )
     }
+  }, [])
+
+
+  //나중에 ripple 넣어보자
+  const handleFileSettingBtnClick: React.MouseEventHandler = (e) => {
+    console.debug('e:', e)
+    
   };
 
   return (
-    <div className='px-10 sticky top-4 z-50'>
-      <div className='mx-auto container'>
-        <MTNavbar placeholder={''} variant={'gradient'} blurred color={'blue-gray'} className={'mx-auto max-w-screen-xl from-blue-gray-900 to-blue-gray-800 px-4 py-3'}>
-          <div className='flex flex-wrap items-center justify-between gap-y-4 text-white'>
-            <Typography placeholder={''} as='a' href='#' variant='h6' className='mr-4 ml-2 cursor-pointer py-1.5'>
-              설정
-            </Typography>
-            <div className='ml-auto flex gap-1 md:mr-4'>
-              <Button placeholder={''} color='gray' onClick={fileSettingBtnHandle}>
+    <div className="px-10 sticky top-4 z-50">
+      <div className="container">
+        <nav className="max-w-screen-xl h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl">
+          <div className="h-full w-full px-5 py-2 flex flex-wrap items-center justify-between text-white">
+            <span className="font-bold text-inherit mr-4 ml-2">설정</span>
+            <div className="flex ml-auto gap-1.5 md:mr-4">
+              <button
+                id='ripple-btn'
+                className="relative text-white font-bold h-full bg-black py-3 px-6 text-xs hover:opacity-80 active:bg-white/30 active:shadow-button_active rounded-lg shadow-button active:animation-ripple"
+                onClick={handleFileSettingBtnClick}>
                 배포 파일 세팅하기
-              </Button>
-              <IconButton placeholder={''} variant='text' color='white'>
-                <Cog6ToothIcon className='h-4 w-4' />
-              </IconButton>
-              <IconButton placeholder={''} variant='text' color='white'>
-                <BellIcon className='h-4 w-4' />
-              </IconButton>
+              </button>
+              <button className="w-10 h-10 hover:bg-white/10 active:bg-white/30 rounded-lg">
+                <Cog6ToothIcon className="h-4 w-full" />
+              </button>
+              <button className="w-10 h-10 hover:bg-white/10 active:bg-white/30 rounded-lg">
+                <BellIcon className="h-4 w-full" />
+              </button>
             </div>
-            {/* <div className='relative flex w-full gap-2 md:w-max'>
-              <Input
-                crossOrigin={''}
-                placeholder={''}
-                type='search'
-                color='white'
-                label='모듈명 입력...'
-                className='pr-20'
-                containerProps={{
-                  className: 'min-w-[288px]',
-                }}
-                onChange={(e) => {
-                  console.log(e);
-                }}
-              />
-              <Button placeholder={''} size='sm' color='white' className='!absolute right-1 top-1 rounded'>
-                조회
-              </Button>
-            </div> */}
           </div>
-          {/* <Collapse open={open}>
-            <div className='container mx-auto mt-3 border-t border-gray-200 px-2 pt-4'>
-              <ul className='flex flex-col gap-4'>
-                {NAV_MENU.map(({ name, icon: Icon, href }) => (
-                  <NavItem key={name} href={href}>
-                    <Icon className='h-5 w-5' />
-                    {name}
-                  </NavItem>
-                ))}
-              </ul>
-              <div className='mt-6 mb-4 flex items-center gap-4'>
-                <Button placeholder={''} variant='text'>
-                  Log in
-                </Button>
-                <a href='https://www.material-tailwind.com/blocks' target='_blank'>
-                  <Button placeholder={''} color='gray'>
-                    blocks
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </Collapse> */}
-        </MTNavbar>
+        </nav>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;
