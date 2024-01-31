@@ -137,3 +137,27 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+
+.ripple-btn {
+  position: absolute;
+  background-color: #ffffffbe;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.5s linear;
+  z-index: 100;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
