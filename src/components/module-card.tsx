@@ -5,7 +5,6 @@ interface ModuleCardProps {
 }
 
 export function ModuleCard({ module }: ModuleCardProps) {
-
   return (
     <Card placeholder={''} className='border'>
       <CardHeader placeholder={''} className='h-52' shadow={true} floated={true}>
