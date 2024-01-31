@@ -22,9 +22,9 @@ export const Navbar = () => {
   }
 
   return (
-    <div className="px-10 sticky top-4 z-50">
+    <nav className="px-10 sticky top-4 z-50 flex justify-center">
       <div className="container">
-        <nav className="max-w-screen-xl h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl">
+        <div className="max-w-screen-xl h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl">
           <div className="h-full w-full px-5 py-2 flex flex-wrap items-center justify-between text-white">
             <span className="font-bold text-inherit mr-4 ml-2">설정</span>
             <div className="flex ml-auto gap-1.5 md:mr-4">
@@ -41,9 +41,9 @@ export const Navbar = () => {
               </button>
             </div>
           </div>
-        </nav>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
